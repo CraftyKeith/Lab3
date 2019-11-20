@@ -17,11 +17,11 @@ var polygon = L.polygon([
 	[47.3355, -122.45],
 	[47.32, -122.44]
 ]).addTo(mymap);
-marker.bindPopup("<b>Hello world!</b><br>I'm an annoying popup.").openPopup();
-circle.bindPopup("I am a circle.");
-polygon.bindPopup("I am a polygon.");
-function onMapClick(e) {
-	alert("You clicked the map at " + e.latlng);
+// marker.bindPopup("<b>Hello world!</b><br>I'm an annoying popup.").openPopup();
+// circle.bindPopup("I am a circle.");
+// polygon.bindPopup("I am a polygon.");
+// function onMapClick(e) {
+// 	alert("You clicked the map at " + e.latlng);
 }
 //$.getJSON(Signals.json",functional(data){L.geoJson(data,{style:function(feature) {return { color:"red",fillOpacity:0.5 };}onEachFeature:function (feature, layer){layer.bindPopup("<strong>"+"coordinates")}}).addTo(map);});
 mymap.on('click', onMapClick);
