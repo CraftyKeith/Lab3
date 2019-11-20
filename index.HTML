@@ -3,19 +3,24 @@
 <head>
   <title>Lab3 Custom Leaflet Map!</title>
   <h2><center>Roads and Traffic Lights in Pierce County</center></h2>
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
-    integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
-    crossorigin=""/>
 
-    <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
-      integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
-      crossorigin=""></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
+  integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+  crossorigin=""/>
+<script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
+  integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
+  crossorigin=""></script>
+  <!-- <link rel="stylesheet" href="leaflets/leaflet.css" />
+<script src="leaflets/leaflet.js"></script> -->
+
     <script src="jquery-3.4.1.min.js"></script>
      <script src="scripts.js"></script>
      <!-- <script src="styles.css"></script> -->
+
   <style>
-    #map{ height: 90vh; width: 90vh; }
+    #map{ height: 95vh; width: 95vh; }
   </style>
+
   <script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js"
     integrity="sha512-GffPMF3RvMeYyc1LWMHtK8EbPv0iNZ8/oTtHPx9/cc2ILxQ+u905qIwdpULaqDkyBKgOaB57QTMg7ztg8Jm2Og=="
     crossorigin=""></script>
@@ -24,14 +29,12 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
+
 <body>
         <link rel="stylesheet" href="styles.css" type="text/css">
-
   <div id="map"></div>
 
-
   <script>
-
   // initialize the map
   var map = L.map('map').setView([47.2, -122.2], 11);
 
@@ -43,11 +46,12 @@
   	id: 'mapbox.streets',
   	accessToken: 'pk.eyJ1IjoiY3JhZnR5a2VpdGgiLCJhIjoiY2poYXQxeWtpMDRwcDM3cnoxc213NzFzcSJ9.DKC2Wj-iDP_ARDtUElmXnw'
   }).addTo(map);
-    load Pierce County Roads GeoJSON from an external file
-$.getJSON("Roads.json",function(data){
-  // add GeoJSON layer to the map once the file is loaded
-  L.geoJson(data).addTo(map);
-  });
+
+//     // load Pierce County Roads GeoJSON from an external file
+// $.getJSON("Roads.json",function(data){
+//   // add GeoJSON layer to the map once the file is loaded
+//   L.geoJson(data).addTo(map);
+//   });
 
   // load Peirce County Owned Street Signals GeoJSON from an external file
 $.getJSON("Signals.json",function(data){
@@ -62,7 +66,7 @@ L.geoJson(data ,{
     }
   }).addTo(map);
 });
-L.geoJSON(geojsonFeature).addTo(map);
+//L.geoJSON(geojsonFeature).addTo(map);
 
 // //Load County Boundary
 // $.getJSON("boundary.json",function(data){
@@ -76,17 +80,16 @@ L.geoJSON(geojsonFeature).addTo(map);
 
 
 
-map.on('click', 'boundary', function (e) {
-      //1. set the coordinates of the popup
-      var coordinates = e.features[0].geometry.coordinates;
-      //2. create the information that will display in the popup
-      var description = e.features[0].properties.mag;
-      //var description = "<h3>"+e.features[0].properties.title+"</h3>"+"<p>Magnitude: " + e.features[0].properties.mag + "<br>Status: " + e.features[0].properties.status + "<br> Tsunami: " + e.features[0].properties.tsunami + "</p>";
-      //3. make the popup
-      new mapboxgl.Popup()
-              .setLngLat(coordinates)
-
+// map.on('click', 'signal', function (e) {
+//       //1. set the coordinates of the popup
+//       var coordinates = e.features[0].geometry.coordinates;
+//       //2. create the information that will display in the popup
+//       var description = "<p>This is the traffic signal at " + e.features[0].geometry.coordinates;
+//       //3. make the popup
+//       new mapboxgl.Popup()
+//               .setLngLat(coordinates)
   </script>
-  <p> Pierce County owned signals and off the public roads within Pierce County Roads. Data Source:Pierce County Open GeoSpatial Data Portal </p>
+  <p> Pierce County owned signals and off the public roads within Pierce County Roads.</P><br>
+  <p> Data Source:Pierce County Open GeoSpatial Data Portal.</p>
 </body>
 </html>
