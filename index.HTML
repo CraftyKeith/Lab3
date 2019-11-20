@@ -9,7 +9,7 @@
     <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
       integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
       crossorigin=""></script>
-    <script src="jquery-2.1.1.min.js"></script>
+    <script src="jquery-3.4.1.min.js"></script>
   <style>
     #map{ height: 100vh; width: 100vh; }
   </style>
@@ -22,28 +22,36 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
+        <link rel="stylesheet" href="styles.css" type="text/css">
 
   <div id="map"></div>
+ <script src="scripts.js"></script>
 
   <script>
 
   // initialize the map
-  var map = L.map('map').setView([47.1849, -122.292], 13);
+  var map = L.map('map').setView([47.2, -122.2], 13);
 
   // load a tile layer
   //maptile website****
   L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
   	attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-  	maxZoom: 18,
+  	maxZoom: 11,
   	id: 'mapbox.streets',
   	accessToken: 'pk.eyJ1IjoiY3JhZnR5a2VpdGgiLCJhIjoiY2poYXQxeWtpMDRwcDM3cnoxc213NzFzcSJ9.DKC2Wj-iDP_ARDtUElmXnw'
-  }).addTo(mymap);
-    // load GeoJSON from an external file
-//$.getJSON("Signals.json",function(data){
-  // add GeoJSON layer to the map once the file is loaded
-  //L.geoJson(data).addTo(map);
-//});
-
+  }).addTo(map);
+    // load Pierce County Roads GeoJSON from an external file
+// $.getJSON("Roads.json",function(data){
+//   // add GeoJSON layer to the map once the file is loaded
+//   L.geoJson(data).addTo(map);
+//   });
+  // load Peirce County Owned Street Signals GeoJSON from an external file
+$.getJSON("Signals.json",function(data){
+// add GeoJSON layer to the map once the file is loaded
+L.geoJson(data).addTo(map);
+});
+L.geoJSON(geojsonFeature).addTo(map);
   </script>
+  <p> Pierce County owned signals on Pierce County Roads</p>
 </body>
 </html>
